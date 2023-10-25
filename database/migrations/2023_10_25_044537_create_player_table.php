@@ -18,7 +18,11 @@ class CreatePlayerTable extends Migration
             $table->id()->autoIncrement()->unsigned()->comment('角色編號(主鍵)');
             $table->string('name')->comment('角色名稱');
             $table->string('profession')->comment('角色職業');
-            $table->tinyInteger('world')->unsigned()->comment('所屬區域(外部鍵)');
+            $table->foreignId('world')->unsigned()->comment('所屬區域(外部鍵)');
+            $table->foreign('world')
+                  ->references('id')
+                  ->on('world')
+                  ->onDelete('cascade');
             $table->float('usage rate')->unsigned()->comment('使用率');
             $table->float('winning rate')->unsigned()->comment('勝率');
             $table->float('ban rate')->unsigned()->comment('禁用率');
