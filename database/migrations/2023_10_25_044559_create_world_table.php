@@ -13,9 +13,11 @@ class CreateWorldTable extends Migration
      */
     public function up()
     {
-        Schema::create('world', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('world', function (Blueprint $table) 
+        {
+            $table->id()->autoIncrement()->unsigned()->comment('所屬區域編號(主鍵)');
+            $table->timestamps('created_at');
+            $table->timestamps('updated_at');
         });
     }
 
