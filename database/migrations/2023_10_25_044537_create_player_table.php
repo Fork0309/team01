@@ -24,8 +24,7 @@ class CreatePlayerTable extends Migration
             $table->float('ban rate')->unsigned()->comment('禁用率');
             $table->integer('skin of shapes')->unsigned()->comment('當前造型數量');
             $table->date('listing date')->comment('上市時間');
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
+            $table->timestamps();
         });
     }
 
