@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class PlayerTableSeeder extends Seeder
+class PlayersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
