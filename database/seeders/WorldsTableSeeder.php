@@ -79,7 +79,10 @@ class WorldsTableSeeder extends Seeder
 
     public function run()
     {
-        for ($i = 0; $i < 3; $i++)
+        $now = now(); // 獲取當前時間(UTC)
+        $Worlds = 3; // 區域總數
+
+        for ($i = 0; $i < $Worlds; $i++)
         {
             DB::table('world')->insert([
                 'region' => $this->Region(),
@@ -87,6 +90,9 @@ class WorldsTableSeeder extends Seeder
                 'attitude' => $this->Attitude(),
                 'technology' => $this->Technology(),
                 'environment' => $this->Environment(),
+
+                'created_at' => $now,
+                'updated_at' => $now,
             ]);
         }
     }

@@ -129,7 +129,10 @@ class PlayersTableSeeder extends Seeder
 
     public function run()
     {
-        for ($i = 0; $i < 3; $i++)
+        $now = now(); // 獲取當前時間(UTC)
+        $Characters = 3; // 角色總數
+
+        for ($i = 0; $i < $Characters; $i++)
         {
             DB::table('player')->insert([
                 'name' => $this->Name(),
@@ -140,6 +143,9 @@ class PlayersTableSeeder extends Seeder
                 'ban rate' => $this->Banrate(),
                 'skin of shapes' => $this->Skinofshapes(),
                 'listing date' => $this->Listingdate(),
+
+                'created_at' => $now,
+                'updated_at' => $now,
             ]);
         }
     }
