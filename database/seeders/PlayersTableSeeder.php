@@ -129,8 +129,11 @@ class PlayersTableSeeder extends Seeder
 
     public function run()
     {
+        // 在運行種子之前清空資料表
+        DB::table('player')->truncate();
+
         $now = now(); // 獲取當前時間(UTC)
-        $Characters = 3; // 角色總數
+        $Characters = 167; // 角色總數
 
         for ($i = 0; $i < $Characters; $i++)
         {

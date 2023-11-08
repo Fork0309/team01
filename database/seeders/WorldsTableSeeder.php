@@ -79,8 +79,11 @@ class WorldsTableSeeder extends Seeder
 
     public function run()
     {
+        // 在運行種子之前清空資料表
+        DB::table('world')->truncate();
+
         $now = now(); // 獲取當前時間(UTC)
-        $Worlds = 3; // 區域總數
+        $Worlds = 14; // 區域總數
 
         for ($i = 0; $i < $Worlds; $i++)
         {
