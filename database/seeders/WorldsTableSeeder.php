@@ -9,35 +9,35 @@ class WorldsTableSeeder extends Seeder
 {
     private $regions = 
     [
-        '弗雷爾卓德', '蒂瑪西亞', '諾克薩斯',
+        '弗雷爾卓德', '蒂瑪西亞', '諾克薩斯', '艾歐尼亞',
     ];
     
     private $regionIndex = 0;
 
     private $rules = 
     [
-        '母系部落', '封建君主制', '崇尚擴張主義的帝國',
+        '母系部落', '封建君主制', '崇尚擴張主義的帝國', '區域省份',
     ];
 
     private $ruleIndex = 0;
 
     private $attitudes = 
     [
-        '崇敬', '抵制', '武器化',
+        '崇敬', '抵制', '武器化', '和諧',
     ];
     
     private $attitudeIndex = 0;
 
     private $technologys = 
     [
-        '低', '中', '中',
+        '低', '中', '中', '低',
     ];
     
     private $technologyIndex = 0;
 
     private $environments = 
     [
-        '冰霜覆蓋的苔原', '富饒的農村', '貧瘠的平原',
+        '冰霜覆蓋的苔原', '富饒的農村', '貧瘠的平原', '多樣的魔法',
     ];
     
     private $environmentIndex = 0;
@@ -80,7 +80,7 @@ class WorldsTableSeeder extends Seeder
     public function run()
     {
         // 在運行種子之前清空資料表
-        DB::table('world')->truncate();
+        DB::table('worlds')->truncate();
 
         $now = now(); // 獲取當前時間(UTC)
         $Worlds = 14; // 區域總數

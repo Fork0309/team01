@@ -10,49 +10,49 @@ class PlayersTableSeeder extends Seeder
 {
     private $names = 
     [
-        '艾妮維亞', '艾希', '布郎姆',
+        '艾妮維亞', '艾希', '布郎姆', '呐兒',
     ];
     
     private $nameIndex = 0;
 
     private $professions = 
     [
-        '法師', '射手', '輔助',
+        '法師', '射手', '輔助', '鬥士',
     ];
 
     private $professionIndex = 0;
 
     private $worlds = 
     [
-        1, 1, 1,
+        1, 1, 1, 1,
     ];
 
     private $worldIndex = 0;
 
     private $usagerates = 
     [
-        2.80, 13.50, 3.20,
+        2.80, 13.50, 3.20, 3.20,
     ];
 
     private $usagerateIndex = 0;
 
     private $winningrates = 
     [
-        50.30, 50.90, 50.40,
+        50.30, 50.90, 50.40, 49,
     ];
 
     private $winningrateIndex = 0;
 
     private $banrates = 
     [
-        2.10, 9.20, 0.60,
+        2.10, 9.20, 0.60, 0.60,
     ];
 
     private $banrateIndex = 0;
 
     private $skinofshapess = 
     [
-        14, 17, 16,
+        14, 17, 16, 10,
     ];
 
     private $skinofshapesIndex = 0;
@@ -63,7 +63,10 @@ class PlayersTableSeeder extends Seeder
     {
         $this->listingdates = 
         [
-            Carbon::create(2009, 7, 10), Carbon::create(2009, 2, 21), Carbon::create(2014, 5, 12),
+            Carbon::create(2009, 7, 10),
+            Carbon::create(2009, 2, 21),
+            Carbon::create(2014, 5, 12),
+            Carbon::create(2014, 8, 14),
         ];
 
         $this->listingdateIndex = 0;
@@ -130,7 +133,7 @@ class PlayersTableSeeder extends Seeder
     public function run()
     {
         // 在運行種子之前清空資料表
-        DB::table('player')->truncate();
+        DB::table('players')->truncate();
 
         $now = now(); // 獲取當前時間(UTC)
         $Characters = 167; // 角色總數
