@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWorldTable extends Migration
+class CreateWorldsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateWorldTable extends Migration
      */
     public function up()
     {
-        Schema::create('world', function (Blueprint $table) 
+        Schema::create('worlds', function (Blueprint $table) 
         {
             $table->id()->autoIncrement()->unsigned()->comment('所屬區域編號(主鍵)');
             $table->string('region')->comment('區域');
@@ -32,6 +32,6 @@ class CreateWorldTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('world');
+        Schema::dropIfExists('worlds');
     }
 }
