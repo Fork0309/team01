@@ -87,7 +87,7 @@ class WorldsTableSeeder extends Seeder
 
         for ($i = 0; $i < $Worlds; $i++)
         {
-            DB::table('world')->insert([
+            DB::table('worlds')->insert([
                 'region' => $this->Region(),
                 'rule' => $this->Rule(),
                 'attitude' => $this->Attitude(),

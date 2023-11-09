@@ -140,7 +140,7 @@ class PlayersTableSeeder extends Seeder
 
         for ($i = 0; $i < $Characters; $i++)
         {
-            DB::table('player')->insert([
+            DB::table('players')->insert([
                 'name' => $this->Name(),
                 'profession' => $this->Profession(),
                 'world' => $this->World(),
