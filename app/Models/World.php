@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class World extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'region',
+        'rule',
+        'attitude',
+        'technology',
+        'environment',
+        
+        'created_at',
+        'updated_at',
+    ];
 }
