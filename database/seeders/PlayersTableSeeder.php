@@ -8,126 +8,111 @@ use Illuminate\Support\Facades\DB;
 
 class PlayersTableSeeder extends Seeder
 {
-    private $names = 
-    [
-        '艾妮維亞', '艾希', '布郎姆', '呐兒',
-    ];
-    
-    private $nameIndex = 0;
-
-    private $professions = 
-    [
-        '法師', '射手', '輔助', '鬥士',
-    ];
-
-    private $professionIndex = 0;
-
-    private $worlds = 
-    [
-        1, 1, 1, 1,
-    ];
-
-    private $worldIndex = 0;
-
-    private $usagerates = 
-    [
-        2.80, 13.50, 3.20, 3.20,
-    ];
-
-    private $usagerateIndex = 0;
-
-    private $winningrates = 
-    [
-        50.30, 50.90, 50.40, 49,
-    ];
-
-    private $winningrateIndex = 0;
-
-    private $banrates = 
-    [
-        2.10, 9.20, 0.60, 0.60,
-    ];
-
-    private $banrateIndex = 0;
-
-    private $skinofshapess = 
-    [
-        14, 17, 16, 10,
-    ];
-
-    private $skinofshapesIndex = 0;
-
-    private $listingdates;
-
-    public function __construct()
+    public function RandomName()
     {
-        $this->listingdates = 
+        $names =
+        [
+            '艾妮維亞',
+            '艾希',
+            '布郎姆',
+            '雷茲',
+            '費德提克',
+            '飛斯',
+            '努努和威朗普',
+            '弗力貝爾',
+            '嘉文四世',
+            '葵恩',
+        ];
+
+        return $names[rand(0,count($names) - 1)];
+    }
+
+    public function RandomProfession()
+    {
+        $professions =
+        [
+            '法師',
+            '射手',
+            '刺客',
+            '鬥士',
+            '輔助',
+            '坦克',
+            '牧師',
+            '鍛造師',
+            '商人',
+            '獵人',
+        ];
+
+        return $professions[rand(0,count($professions) - 1)];
+    }
+
+    public function RandomWorld()
+    {
+        $worlds =
+        [
+            1,2,3,4,5,6,7,8,9,10,
+        ];
+
+        return $worlds[rand(0,count($worlds) - 1)];
+    }
+
+    public function RandomUsagerate()
+    {
+        $usagerates =
+        [
+            10,20,30,40,50,60,70,80,90,100,
+        ];
+
+        return $usagerates[rand(0,count($usagerates) - 1)];
+    }
+
+    public function RandomWinningrate()
+    {
+        $winningrates =
+        [
+            10,20,30,40,50,60,70,80,90,100,
+        ];
+
+        return $winningrates[rand(0,count($winningrates) - 1)];
+    }
+
+    public function RandomBanrate()
+    {
+        $banrates =
+        [
+            10,20,30,40,50,60,70,80,90,100,
+        ];
+
+        return $banrates[rand(0,count($banrates) - 1)];
+    }
+
+    public function RandomSkinofshapes()
+    {
+        $skinofshapes =
+        [
+            1,2,3,4,5,6,7,8,9,10,
+        ];
+
+        return $skinofshapes[rand(0,count($skinofshapes) - 1)];
+    }
+
+    public function RandomListingdate()
+    {
+        $listingdates =
         [
             Carbon::create(2009, 7, 10),
             Carbon::create(2009, 2, 21),
             Carbon::create(2014, 5, 12),
             Carbon::create(2014, 8, 14),
+            Carbon::create(2017, 6, 5),
+            Carbon::create(2013, 1, 28),
+            Carbon::create(2010, 3, 19),
+            Carbon::create(2012, 5, 22),
+            Carbon::create(2018, 4, 13),
+            Carbon::create(2021, 8, 24),
         ];
 
-        $this->listingdateIndex = 0;
-    }
-
-    private $listingdateIndex = 0;
-
-    public function Name()
-    {
-        $name = $this->names[$this->nameIndex];
-        $this->nameIndex = ($this->nameIndex + 1) % count($this->names);
-        return $name;
-    }
-
-    public function Profession()
-    {
-        $profession = $this->professions[$this->professionIndex];
-        $this->professionIndex = ($this->professionIndex + 1) % count($this->professions);
-        return $profession;
-    }
-
-    public function World()
-    {
-        $world = $this->worlds[$this->worldIndex];
-        $this->worldIndex = ($this->worldIndex + 1) % count($this->worlds);
-        return $world;
-    }
-
-    public function Usagerate()
-    {
-        $usagerate = $this->usagerates[$this->usagerateIndex];
-        $this->usagerateIndex = ($this->usagerateIndex + 1) % count($this->usagerates);
-        return $usagerate;
-    }
-
-    public function Winningrate()
-    {
-        $winningrate = $this->winningrates[$this->winningrateIndex];
-        $this->winningrateIndex = ($this->winningrateIndex + 1) % count($this->winningrates);
-        return $winningrate;
-    }
-
-    public function Banrate()
-    {
-        $banrate = $this->banrates[$this->banrateIndex];
-        $this->banrateIndex = ($this->banrateIndex + 1) % count($this->banrates);
-        return $banrate;
-    }
-
-    public function Skinofshapes()
-    {
-        $skinofshapes = $this->skinofshapess[$this->skinofshapesIndex];
-        $this->skinofshapesIndex = ($this->skinofshapesIndex + 1) % count($this->skinofshapess);
-        return $skinofshapes;
-    }
-
-    public function Listingdate()
-    {
-        $listingdate = $this->listingdates[$this->listingdateIndex];
-        $this->listingdateIndex = ($this->listingdateIndex + 1) % count($this->listingdates);
-        return $listingdate;
+        return $listingdates[rand(0,count($listingdates) - 1)];
     }
 
     public function run()
@@ -136,19 +121,28 @@ class PlayersTableSeeder extends Seeder
         DB::table('players')->truncate();
 
         $now = now(); // 獲取當前時間(UTC)
-        $Characters = 167; // 角色總數
+        $Characters = 30; // 角色總數
 
         for ($i = 0; $i < $Characters; $i++)
         {
+            $name = $this->RandomName();
+            $profession = $this->RandomProfession();
+            $world = $this->RandomWorld();
+            $usagerate = $this->RandomUsagerate();
+            $winningrate = $this->RandomWinningrate();
+            $banrate = $this->RandomBanrate();
+            $skinofshapes = $this->RandomSkinofshapes();
+            $listingdate = $this->RandomListingdate();
+
             DB::table('players')->insert([
-                'name' => $this->Name(),
-                'profession' => $this->Profession(),
-                'world' => $this->World(),
-                'usage rate' => $this->Usagerate(),
-                'winning rate' => $this->Winningrate(),
-                'ban rate' => $this->Banrate(),
-                'skin of shapes' => $this->Skinofshapes(),
-                'listing date' => $this->Listingdate(),
+                'name' => $name,
+                'profession' => $profession,
+                'world' => $world,
+                'usage rate' => $usagerate,
+                'winning rate' => $winningrate,
+                'ban rate' => $banrate,
+                'skin of shapes' => $skinofshapes,
+                'listing date' => $listingdate,
 
                 'created_at' => $now,
                 'updated_at' => $now,
