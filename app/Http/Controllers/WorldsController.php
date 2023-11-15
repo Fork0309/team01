@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\World;
 use Illuminate\Http\Request;
+use App\Models\World;
 
 class WorldsController extends Controller
 {
@@ -15,6 +15,7 @@ class WorldsController extends Controller
     public function index()
     {
         //
+        return World::all()->toArray();
     }
 
     /**
@@ -41,10 +42,10 @@ class WorldsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\World  $world
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(World $world)
+    public function show($id)
     {
         //
     }
@@ -52,10 +53,10 @@ class WorldsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\World  $world
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(World $world)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +65,10 @@ class WorldsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\World  $world
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, World $world)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +76,10 @@ class WorldsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\World  $world
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(World $world)
+    public function destroy($id)
     {
         //
     }

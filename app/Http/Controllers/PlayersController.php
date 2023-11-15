@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Player;
 use Illuminate\Http\Request;
+use App\Models\Player;
 
 class PlayersController extends Controller
 {
@@ -15,6 +15,7 @@ class PlayersController extends Controller
     public function index()
     {
         //
+        return Player::all()->toArray();
     }
 
     /**
@@ -41,10 +42,10 @@ class PlayersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Player  $player
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Player $player)
+    public function show($id)
     {
         //
     }
@@ -52,10 +53,10 @@ class PlayersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Player  $player
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Player $player)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +65,10 @@ class PlayersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Player  $player
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Player $player)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +76,10 @@ class PlayersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Player  $player
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Player $player)
+    public function destroy($id)
     {
         //
     }
