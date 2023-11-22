@@ -17,7 +17,8 @@ class PlayersController extends Controller
     public function index()
     {
         //
-        return Player::all()->toArray();
+        Player::all()->toArray();
+        return view('players.index');
     }
 
     /**
