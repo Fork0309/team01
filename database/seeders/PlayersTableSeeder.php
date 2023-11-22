@@ -46,18 +46,7 @@ class PlayersTableSeeder extends Seeder
         return $professions[rand(0,count($professions) - 1)];
     }
 
-    public function RandomWorld()
-    {
-        $worlds =
-        [
-            1,2,3,4,5,6,7,8,9,10,
-            11,12,13,14,15,16,17,18,19,20,
-            21,22,23,24,25,26,27,28,29,30,
-
-        ];
-
-        return $worlds[rand(0,count($worlds) - 1)];
-    }
+    private $worldIndex = 0;
 
     public function RandomUsagerate()
     {
@@ -130,7 +119,7 @@ class PlayersTableSeeder extends Seeder
         {
             $name = $this->RandomName();
             $profession = $this->RandomProfession();
-            $world = $this->RandomWorld();
+            $world = $this->worldIndex = ($this->worldIndex + 1);
             $usagerate = $this->RandomUsagerate();
             $winningrate = $this->RandomWinningrate();
             $banrate = $this->RandomBanrate();
