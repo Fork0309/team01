@@ -23,11 +23,11 @@ class CreatePlayersTable extends Migration
                   ->references('id')
                   ->on('world')
                   ->onDelete('cascade');
-            $table->float('usage rate')->unsigned()->comment('使用率');
-            $table->float('winning rate')->unsigned()->comment('勝率');
-            $table->float('ban rate')->unsigned()->comment('禁用率');
-            $table->integer('skin of shapes')->unsigned()->comment('當前造型數量');
-            $table->date('listing date')->comment('上市時間');
+            $table->float('usage_rate')->unsigned()->comment('使用率');
+            $table->float('winning_rate')->unsigned()->comment('勝率');
+            $table->float('ban_rate')->unsigned()->comment('禁用率');
+            $table->integer('skin_of_shapes')->unsigned()->comment('當前造型數量');
+            $table->date('listing_date')->comment('上市時間');
             $table->timestamps();
         });
     }
