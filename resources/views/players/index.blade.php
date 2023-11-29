@@ -19,9 +19,9 @@
                 <th>禁用率</th>
                 <th>當前造型數量</th>
                 <th>上市時間</th>
-                <th>操作1</th>
-                <th>操作2</th>
-                <th>操作3</th>
+                <th>顯示該角色資料</th>
+                <th>修改該角色資料</th>
+                <th>刪除該角色資料</th>
             </tr>
 
             @for($i=0; $i<count($players); $i++)
@@ -35,6 +35,9 @@
                     <td>{{ $players[$i]['ban_rate']}}</td>
                     <td>{{ $players[$i]['skin_of_shapes']}}</td>
                     <td>{{ $players[$i]['listing_date']}}</td>
+                    <td><a href="{{ route('players.show', ['id'=>$players[$i]['id']]) }}">顯示</a></td>
+                    <td><a href="{{ route('players.edit', ['id'=>$players[$i]['id']]) }}">修改</a></td>    
+                    <td>刪除</td>
                 </tr>
             @endfor
 
