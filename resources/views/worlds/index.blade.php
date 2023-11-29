@@ -1,12 +1,8 @@
-<html>
+@extends('app')
 
-<head>
-    <title>列出所有區域</title>
-</head>
+@section('title', '英雄聯盟網站 - 列出所有角色')
 
-<body>
-
-    <h1>列出所有區域</h1>
+@section('lol_contents')
 
 <table>
 
@@ -38,6 +34,4 @@
 
 <table>
 
-
-</body>
-</html>
+@endsection
