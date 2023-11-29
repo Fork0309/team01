@@ -16,51 +16,23 @@ class PlayersController extends Controller
      */
     public function index()
     {
-        //
-        return Player::all()->toArray();
+        // 從 Model 拿資料
+        $players = Player::all()->toArray();
+
+        // 把資料送給 view
+        return view('players.index')->with('players', $players);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
+        return Player::findOrFail($id)->toArray();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
+        return Player::findOrFail($id)->toArray();
     }
 
     /**
