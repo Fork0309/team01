@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', '英雄聯盟網站 - 列出所有角色')
+@section('title', '英雄聯盟網站 - 列出所有區域')
 
 @section('lol_contents')
 

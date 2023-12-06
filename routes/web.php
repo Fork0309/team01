@@ -6,8 +6,11 @@ use Illuminate\Support\Facades\Route;
 
 // --------------------------- players -------------------------------
 
-// 顯示顯示所有角色資料
+// 顯示所有角色資料
 Route::get('players', [PlayersController::class, 'index'])->name('players.index');
+
+// 新增表單
+Route::get('players/create', [PlayersController::class, 'create'])->name('players.create');
 
 // 顯示單一角色資料
 Route::get('players/{id}', [PlayersController::class, 'show'])->where('id', '[0-9]+')->name('players.show');

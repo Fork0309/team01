@@ -25,8 +25,11 @@ class PlayersController extends Controller
 
     public function show($id)
     {
-        //
-        return Player::findOrFail($id)->toArray();
+        // 從 Model 拿資料
+        $player = Player::findOrFail($id);
+
+        // 把資料送給 view
+        return view('players.show')->with('player', $player);
     }
 
     public function edit($id)

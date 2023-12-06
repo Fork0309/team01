@@ -23,8 +23,11 @@ class WorldsController extends Controller
 
     public function show($id)
     {
-        //
-        return World::findOrFail($id)->toArray();
+        // 從 Model 拿資料
+        $world = World::findOrFail($id);
+
+        // 把資料送給 view
+        return view('worlds.show')->with('world', $world);
     }
 
     public function edit($id)
