@@ -21,8 +21,8 @@
         <th>刪除角色資料</th>
     </tr>
 
-    @for($i=0; $i<count($players); $i++)
-        <tr>
+    @for($i=0; $i<count($players); $i+2)        
+    <tr>
             <td>{{ $players[$i]['id']}}</td>
             <td>{{ $players[$i]['name']}}</td>
             <td>{{ $players[$i]['profession']}}</td>
