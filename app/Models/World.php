@@ -19,4 +19,15 @@ class World extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function players()
+    {
+        return $this->hasMany('App\Models\Player', 'world');
+    }
+
+    public function delete()
+    {
+        $this->players()->delete();
+        return parent::delete();
+    }        
 }

@@ -4,11 +4,42 @@
 
 @section('lol_contents')
 
-區域編號:{{$world -> id}} <br/>
-區域:{{$world -> region}} <br/>
-統治:{{$world -> rule}} <br/>
-對於魔法的態度:{{$world -> attitude}} <br/>
-科技水平:{{$world -> technology}} <br/>
-整體環境:{{$world -> environment}} <br/>
+<h1>{{ $world->region }}的所有角色</h1>
+
+<table>
+    <tr>
+        <th>角色編號</th>
+        <th>角色名稱</th>
+        <th>角色職業</th>
+        <th>所屬區域</th>
+        <th>使用率</th>
+        <th>勝率</th>
+        <th>禁用率</th>
+        <th>當前造型數量</th>
+        <th>上市時間</th>
+    </tr>
+
+    @foreach ($players as $player)
+        <tr>
+            <td>{{ $player -> id}}</td>
+            <td>{{ $player -> name}}</td>
+            <td>{{ $player -> profession}}</td>
+            <td>
+                @php
+                    $world = \App\Models\World::find($player->world);
+                @endphp
+
+                {{$world -> region}}
+            </td>
+
+            <td>{{ $player -> usage_rate}}</td>
+            <td>{{ $player -> winning_rate}}</td>
+            <td>{{ $player -> ban_rate}}</td>
+            <td>{{ $player -> skin_of_shapes}}</td>
+            <td>{{ $player -> listing_date}}</td>
+            
+        </tr>
+    @endforeach
+<table>
 
 @endsection
