@@ -22,4 +22,15 @@ class Player extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function world()
+    {
+        return $this->belongsTo('App\Models\World', 'world', 'id');
+    }
+
+    public function delete()
+    {
+        $this -> world() -> delete();
+        return parent :: delete();
+    }
 }
