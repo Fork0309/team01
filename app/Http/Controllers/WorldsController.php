@@ -15,7 +15,7 @@ class WorldsController extends Controller
     public function index()
     {
         // 從 Model 拿資料
-        $worlds = World::all()->toArray();
+        $worlds = World::all();
 
         // 把資料送給 view
         return view('worlds.index')->with('worlds', $worlds);
@@ -23,8 +23,12 @@ class WorldsController extends Controller
 
     public function show($id)
     {
-        //
-        return World::findOrFail($id)->toArray();
+        // 從 Model 拿資料
+        $world = World::findOrFail($id);
+        $players = $world->players;
+
+        // 把資料送給 view  
+        return view('worlds.show', ['world'=>$world, 'players'=>$players]);
     }
 
     public function edit($id)
@@ -53,6 +57,8 @@ class WorldsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $world = World::findOrFail($id);
+        $world->delete();
+        return redirect('worlds');
     }
 }

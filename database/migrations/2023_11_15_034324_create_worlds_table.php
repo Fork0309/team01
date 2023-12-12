@@ -15,7 +15,7 @@ class CreateWorldsTable extends Migration
     {
         Schema::create('worlds', function (Blueprint $table) 
         {
-            $table->id()->autoIncrement()->unsigned()->comment('所屬區域編號(主鍵)');
+            $table->id()->comment('所屬區域編號(主鍵)');
             $table->string('region')->comment('區域');
             $table->string('rule')->comment('統治');
             $table->string('attitude')->comment('對於魔法的態度');

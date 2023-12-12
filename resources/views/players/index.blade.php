@@ -6,6 +6,8 @@
 
 <table>
 
+    <h1> 所有角色 </h1>
+
     <tr>
         <th>角色編號</th>
         <th>角色名稱</th>
@@ -21,22 +23,36 @@
         <th>刪除角色資料</th>
     </tr>
 
-    @for($i=0; $i<count($players); $i++)
+    @foreach ($players as $player)
         <tr>
-            <td>{{ $players[$i]['id']}}</td>
-            <td>{{ $players[$i]['name']}}</td>
-            <td>{{ $players[$i]['profession']}}</td>
-            <td>{{ $players[$i]['world']}}</td>
-            <td>{{ $players[$i]['usage_rate']}}</td>
-            <td>{{ $players[$i]['winning_rate']}}</td>
-            <td>{{ $players[$i]['ban_rate']}}</td>
-            <td>{{ $players[$i]['skin_of_shapes']}}</td>
-            <td>{{ $players[$i]['listing_date']}}</td>
-            <td><a href="{{ route('players.show', ['id'=>$players[$i]['id']]) }}">顯示</a></td>
-            <td><a href="{{ route('players.edit', ['id'=>$players[$i]['id']]) }}">修改</a></td>    
-            <td>刪除</td>
+            <td>{{ $player -> id}}</td>
+            <td>{{ $player -> name}}</td>
+            <td>{{ $player -> profession}}</td>
+
+            <td>
+                @php
+                    $world = \App\Models\World::find($player->world);
+                @endphp
+    
+                {{ $world->region }}
+            </td>
+
+            <td>{{ $player -> usage_rate}}</td>
+            <td>{{ $player -> winning_rate}}</td>
+            <td>{{ $player -> ban_rate}}</td>
+            <td>{{ $player -> skin_of_shapes}}</td>
+            <td>{{ $player -> listing_date}}</td>
+            <td><a href="{{ route('players.show', ['id' => $player -> id]) }}">顯示</a></td>
+            <td><a href="{{ route('players.edit', ['id' => $player -> id]) }}">修改</a></td>    
+            <td>
+                <form action="{{ url('/players/delete', ['id' => $player->id]) }}" method="post">
+                    <input class="btn btn-default" type="submit" value="刪除" />
+                    @method('delete')
+                    @csrf
+                </form>
+            </td>
         </tr>
-    @endfor
+    @endforeach
 
 </table>
 

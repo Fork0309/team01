@@ -1,10 +1,12 @@
 @extends('app')
 
-@section('title', '英雄聯盟網站 - 列出所有角色')
+@section('title', '英雄聯盟網站 - 列出所有區域')
 
 @section('lol_contents')
 
 <table>
+
+    <h1> 所有區域 </h1>
 
     <tr>
         <th>區域編號</th>
@@ -18,19 +20,26 @@
         <th>刪除該區域資料</th>
     </tr>
 
-    @for($i=0; $i<count($worlds); $i++)
+    @foreach ($worlds as $world)
         <tr>
-            <td>{{ $worlds[$i]['id'] }}</td>
-            <td>{{ $worlds[$i]['region'] }}</td>
-            <td>{{ $worlds[$i]['rule'] }}</td>
-            <td>{{ $worlds[$i]['attitude'] }}</td>
-            <td>{{ $worlds[$i]['technology'] }}</td>
-            <td>{{ $worlds[$i]['environment'] }}</td>
-            <td><a href="{{ route('worlds.show', ['id'=>$worlds[$i]['id']]) }}">顯示</a></td>
-            <td><a href="{{ route('worlds.edit', ['id'=>$worlds[$i]['id']]) }}">修改</a></td>    
-            <td>刪除</td>    
+            <td>{{ $world -> id }}</td>
+            <td>{{ $world -> region }}</td>
+            <td>{{ $world -> rule }}</td>
+            <td>{{ $world -> attitude }}</td>
+            <td>{{ $world -> technology }}</td>
+            <td>{{ $world -> environment }}</td>
+            <td><a href="{{ route('worlds.show', ['id' => $world -> id]) }}">顯示</a></td>
+            <td><a href="{{ route('worlds.edit', ['id' => $world -> id]) }}">修改</a></td>    
+            <td>
+                <form action="{{ url('/worlds/delete', ['id' => $world->id]) }}" method="post">
+                    <input class="btn btn-default" type="submit" value="刪除" />
+                    @method('delete')
+                    @csrf
+                </form>
+            </td>
+    
         </tr>
-    @endfor
+    @endforeach
 
 <table>
 
