@@ -15,13 +15,13 @@ class CreatePlayersTable extends Migration
     {
         Schema::create('players', function (Blueprint $table) 
         {
-            $table->id()->autoIncrement()->unsigned()->comment('角色編號(主鍵)');
+            $table->id()->comment('角色編號(主鍵)');
             $table->string('name')->comment('角色名稱');
             $table->string('profession')->comment('角色職業');
-            $table->foreignId('world')->unsigned()->comment('所屬區域(外部鍵)');
+            $table->foreignId('world')->comment('所屬區域(外部鍵)');
             $table->foreign('world')
                   ->references('id')
-                  ->on('world')
+                  ->on('worlds')
                   ->onDelete('cascade');
             $table->float('usage_rate')->unsigned()->comment('使用率');
             $table->float('winning_rate')->unsigned()->comment('勝率');
