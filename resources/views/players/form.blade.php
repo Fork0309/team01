@@ -8,7 +8,7 @@
 </div>
 <div class="form-group">
     {!! Form::label('world', '所屬區域：') !!}
-    <!-- 待設計一下拉式選單 -->
+    {!! Form::select('world', $worlds, $worldSelected, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('usage_rate', '使用率：') !!}

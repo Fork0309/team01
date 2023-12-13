@@ -23,8 +23,14 @@ Route::get('players/create', [PlayersController::class, 'create'])->name('player
 // 修改單一角色表單
 Route::get('players/{id}/edit', [PlayersController::class, 'edit'])->where('id', '[0-9]+')->name('players.edit');
 
+// 修改角色資料
+Route::patch('players/update/{id}', [PlayersController::class, 'update'])->where('id', '[0-9]+')->name('players.update');
+
+// 儲存角色資料
+Route::post('players/store', [PlayersController::class, 'store'])->where('id', '[0-9]+')->name('players.store');
+
 // 刪除單一角色資料
-Route::get('players/delete/{id}', [PlayersController::class, 'destroy'])->where('id', '[0-9]+')->name('players.destroy');
+Route::delete('players/delete/{id}', [PlayersController::class, 'destroy'])->where('id', '[0-9]+')->name('players.destroy');
 
 // --------------------------- worlds --------------------------------
 
@@ -40,5 +46,11 @@ Route::get('worlds/create', [WorldsController::class, 'create'])->name('worlds.c
 // 修改單一區域表單
 Route::get('worlds/{id}/edit', [WorldsController::class, 'edit'])->where('id', '[0-9]+')->name('worlds.edit');
 
+// 修改區域資料
+Route::patch('worlds/update/{id}', [WorldsController::class, 'update'])->where('id', '[0-9]+')->name('worlds.update');
+
+// 儲存區域資料
+Route::post('worlds/store', [WorldsController::class, 'store'])->where('id', '[0-9]+')->name('worlds.store');
+
 // 刪除單一區域資料
-Route::get('worlds/delete/{id}', [WorldsController::class, 'destroy'])->where('id', '[0-9]+')->name('worlds.destroy');
+Route::delete('worlds/delete/{id}', [WorldsController::class, 'destroy'])->where('id', '[0-9]+')->name('worlds.destroy');

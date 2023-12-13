@@ -13,24 +13,18 @@ class Player extends Model
         'name',
         'profession',
         'world',
-        'usage rate',
-        'winning rate',
-        'ban rate',
-        'skin of shapes',
-        'listing date',
+        'usage_rate',
+        'winning_rate',
+        'ban_rate',
+        'skin_of_shapes',
+        'listing_date',
 
         'created_at',
         'updated_at',
     ];
 
-    public function world()
+    public function region()
     {
         return $this->belongsTo('App\Models\World', 'world', 'id');
-    }
-
-    public function delete()
-    {
-        $this -> world() -> delete();
-        return parent :: delete();
     }
 }

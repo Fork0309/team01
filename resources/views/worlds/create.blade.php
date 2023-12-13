@@ -7,7 +7,7 @@
 @section('lol_contents')
 
     {!! Form::open(['url' => 'worlds/store']) !!}
-    @include('worlds.form', ['submitButtonText'=>"新增區域資料"])
+        @include('worlds.form', ['submitButtonText'=>"新增區域資料"])
     {!! Form::close() !!}
 
 @endsection

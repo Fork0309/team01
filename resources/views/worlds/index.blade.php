@@ -4,9 +4,12 @@
 
 @section('lol_contents')
 
-<table>
+<div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+    <a href="{{ route('worlds.create') }} ">新增區域</a>
+    <a href="{{ route('worlds.index') }} ">所有區域</a>
+</div>
 
-    <h1> 所有區域 </h1>
+<table>
 
     <tr>
         <th>區域編號</th>
