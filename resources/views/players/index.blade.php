@@ -4,9 +4,12 @@
 
 @section('lol_contents')
 
-<table>
+<div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+    <a href="{{ route('players.create') }} ">新增角色</a>
+    <a href="{{ route('players.index') }} ">所有角色</a>
+</div>
 
-    <h1> 所有角色 </h1>
+<table>
 
     <tr>
         <th>角色編號</th>
@@ -28,15 +31,7 @@
             <td>{{ $player -> id}}</td>
             <td>{{ $player -> name}}</td>
             <td>{{ $player -> profession}}</td>
-
-            <td>
-                @php
-                    $world = \App\Models\World::find($player->world);
-                @endphp
-    
-                {{ $world->region }}
-            </td>
-
+            <td>{{ $player -> region -> region }}</td>
             <td>{{ $player -> usage_rate}}</td>
             <td>{{ $player -> winning_rate}}</td>
             <td>{{ $player -> ban_rate}}</td>

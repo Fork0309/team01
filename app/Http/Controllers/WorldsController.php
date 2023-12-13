@@ -21,6 +21,48 @@ class WorldsController extends Controller
         return view('worlds.index')->with('worlds', $worlds);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function create()
+    {
+        return view('worlds.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    
+    public function store(Request $request)
+    {
+        $region = $request->input('region');
+        $rule = $request->input('rule');
+        $attitude = $request->input('attitude');
+        $technology = $request->input('technology');
+        $environment = $request->input('environment');
+
+        $world = World::create([
+            'region'=>$region,
+            'rule'=>$rule,
+            'attitude'=>$attitude,
+            'technology'=>$technology,
+            'environment'=>$environment]);
+        return redirect('worlds');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
     public function show($id)
     {
         // 從 Model 拿資料
@@ -31,10 +73,17 @@ class WorldsController extends Controller
         return view('worlds.show', ['world'=>$world, 'players'=>$players]);
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    
     public function edit($id)
     {
-        //
-        return World::findOrFail($id)->toArray();
+        $world = World::findOrFail($id);
+        return view('worlds.edit', ['world' =>$world]);
     }
 
     /**
@@ -44,9 +93,19 @@ class WorldsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
-        //
+        $world = World::findOrFail($id);
+
+        $world->region = $request->input('region');
+        $world->rule = $request->input('rule');
+        $world->attitude = $request->input('attitude');
+        $world->technology = $request->input('technology');
+        $world->environment = $request->input('environment');
+        $world->save();
+
+        return redirect('worlds');
     }
 
     /**
@@ -55,6 +114,7 @@ class WorldsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
         $world = World::findOrFail($id);
