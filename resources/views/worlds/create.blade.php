@@ -5,9 +5,9 @@
 @section('lol_theme', '新增區域資料')
 
 @section('lol_contents')
-
+    @include('message.list')
     {!! Form::open(['url' => 'worlds/store']) !!}
-        @include('worlds.form', ['submitButtonText'=>"新增區域資料"])
+    @include('worlds.form', ['submitButtonText'=>"新增區域資料"])
     {!! Form::close() !!}
 
 @endsection

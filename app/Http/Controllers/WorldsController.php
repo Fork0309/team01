@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\World;
+use App\Http\Requests\CreateWorldRequest;
 
 class WorldsController extends Controller
 {
@@ -39,7 +39,7 @@ class WorldsController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function store(Request $request)
+    public function store(CreateWorldRequest $request)
     {
         $region = $request->input('region');
         $rule = $request->input('rule');
@@ -94,7 +94,7 @@ class WorldsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, $id)
+    public function update(CreateWorldRequest $request, $id)
     {
         $world = World::findOrFail($id);
 

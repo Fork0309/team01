@@ -5,9 +5,9 @@
 @section('lol_theme', '新增角色資料')
 
 @section('lol_contents')
-
+    @include('message.list')
     {!! Form::open(['url' => 'players/store']) !!}
-        @include('players.form', ['submitButtonText'=>"新增角色資料"])
+    @include('players.form', ['submitButtonText'=>"新增角色資料"])
     {!! Form::close() !!}
 
 @endsection
