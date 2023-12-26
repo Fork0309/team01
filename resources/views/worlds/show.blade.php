@@ -24,14 +24,7 @@
             <td>{{ $player -> id}}</td>
             <td>{{ $player -> name}}</td>
             <td>{{ $player -> profession}}</td>
-            <td>
-                @php
-                    $world = \App\Models\World::find($player->world);
-                @endphp
-
-                {{$world -> region}}
-            </td>
-
+            <td>{{ $player -> region -> region }}</td>
             <td>{{ $player -> usage_rate}}</td>
             <td>{{ $player -> winning_rate}}</td>
             <td>{{ $player -> ban_rate}}</td>
