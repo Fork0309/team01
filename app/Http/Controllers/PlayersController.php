@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Player;
 use App\Models\World;
+use App\Http\Requests\CreatePlayerRequest;
 
 class PlayersController extends Controller
 {
@@ -42,7 +42,7 @@ class PlayersController extends Controller
       * @return \Illuminate\Http\Response
       */
 
-     public function store(Request $request)
+     public function store(CreatePlayerRequest $request)
      {
         $name = $request->input('name');
         $profession = $request->input('profession');
@@ -104,7 +104,7 @@ class PlayersController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, $id)
+    public function update(CreatePlayerRequest $request, $id)
     {
         $player = Player::findOrFail($id);
 

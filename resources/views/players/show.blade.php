@@ -8,17 +8,7 @@
 
 編號:{{$player -> id}} <br/>
 職業:{{$player -> profession}} <br/>
-
-所屬區域:
-
-    @php
-        $world = \App\Models\World::find($player->world);
-    @endphp
-    
-    {{ $world->region }}
-    
-<br/>
-
+所屬區域:{{ $player -> region -> region }}<br/>
 使用率:{{$player -> usage_rate}} <br/>
 勝率:{{$player -> winning_rate}} <br/>
 禁用率:{{$player -> ban_rate}} <br/>
