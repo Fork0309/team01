@@ -39,7 +39,11 @@ class WorldsController extends Controller
      * @return \Illuminate\Http\Response
      */
     
+<<<<<<< HEAD
     public function store(CreateWorldRequest $request)
+=======
+    public function store(Request $request)
+>>>>>>> f5c6776d5ca91305d8339cedbe2b43c5cdb77979
     {
         $region = $request->input('region');
         $rule = $request->input('rule');
@@ -94,7 +98,11 @@ class WorldsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+<<<<<<< HEAD
     public function update(CreateWorldRequest $request, $id)
+=======
+    public function update(Request $request, $id)
+>>>>>>> f5c6776d5ca91305d8339cedbe2b43c5cdb77979
     {
         $world = World::findOrFail($id);
 

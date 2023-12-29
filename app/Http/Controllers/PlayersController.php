@@ -42,7 +42,11 @@ class PlayersController extends Controller
       * @return \Illuminate\Http\Response
       */
 
+<<<<<<< HEAD
      public function store(CreatePlayerRequest $request)
+=======
+     public function store(Request $request)
+>>>>>>> f5c6776d5ca91305d8339cedbe2b43c5cdb77979
      {
         $name = $request->input('name');
         $profession = $request->input('profession');
@@ -104,7 +108,11 @@ class PlayersController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+<<<<<<< HEAD
     public function update(CreatePlayerRequest $request, $id)
+=======
+    public function update(Request $request, $id)
+>>>>>>> f5c6776d5ca91305d8339cedbe2b43c5cdb77979
     {
         $player = Player::findOrFail($id);
 
