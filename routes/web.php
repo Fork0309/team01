@@ -54,3 +54,6 @@ Route::post('worlds/store', [WorldsController::class, 'store'])->where('id', '[0
 
 // 刪除單一區域資料
 Route::delete('worlds/delete/{id}', [WorldsController::class, 'destroy'])->where('id', '[0-9]+')->name('worlds.destroy');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
