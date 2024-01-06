@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\World;
 use App\Http\Requests\CreateWorldRequest;
+use Illuminate\Http\Request;
 
 class WorldsController extends Controller
 {
@@ -16,9 +17,22 @@ class WorldsController extends Controller
     {
         // 從 Model 拿資料
         $worlds = World::all();
-
+        $technologys = World::allTechnologys()->pluck('worlds.technology', 'worlds.technology');
+        
         // 把資料送給 view
-        return view('worlds.index')->with('worlds', $worlds);
+        return view('worlds.index', ['worlds' => $worlds,
+                                      'technologys'=>$technologys,
+                                      'selectedTechnology'=>null,]);
+    }
+
+    public function technology(Request $request)
+    {
+        $worlds = World::technology($request->input('tec'))->paginate(25);
+        $technologys = World::allTechnologys()->pluck('worlds.technology', 'worlds.technology');
+        $selectedTechnology = $request->input('tec');
+        return view('worlds.index', ['worlds' => $worlds,
+                                      'technologys'=>$technologys,
+                                      'selectedTechnology'=>$selectedTechnology,]);
     }
 
     /**
@@ -39,11 +53,7 @@ class WorldsController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-<<<<<<< HEAD
     public function store(CreateWorldRequest $request)
-=======
-    public function store(Request $request)
->>>>>>> f5c6776d5ca91305d8339cedbe2b43c5cdb77979
     {
         $region = $request->input('region');
         $rule = $request->input('rule');
@@ -86,6 +96,8 @@ class WorldsController extends Controller
     
     public function edit($id)
     {
+        parent::edit($id);
+        
         $world = World::findOrFail($id);
         return view('worlds.edit', ['world' =>$world]);
     }
@@ -98,11 +110,7 @@ class WorldsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-<<<<<<< HEAD
     public function update(CreateWorldRequest $request, $id)
-=======
-    public function update(Request $request, $id)
->>>>>>> f5c6776d5ca91305d8339cedbe2b43c5cdb77979
     {
         $world = World::findOrFail($id);
 

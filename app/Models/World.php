@@ -29,5 +29,15 @@ class World extends Model
     {
         $this->players()->delete();
         return parent::delete();
-    }        
+    }
+    
+    public function scopeAllTechnologys($query)
+    { 
+        return $query->select('technology')->groupBy('technology');
+    }
+
+    public function scopeTechnology($query, $tec)
+    {
+        return $query->where('technology', '=', $tec);
+    }
 }
