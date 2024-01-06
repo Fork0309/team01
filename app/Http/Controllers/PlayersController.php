@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Player;
 use App\Models\World;
 use App\Http\Requests\CreatePlayerRequest;
+use Illuminate\Http\Request;
 
 class PlayersController extends Controller
 {
@@ -17,10 +18,23 @@ class PlayersController extends Controller
     public function index()
     {
         // 從 Model 拿資料
-        $players = Player::all();
-
+        $players = Player::paginate(25);
+        $professions = Player::allProfessions()->pluck('players.profession', 'players.profession');
+        
         // 把資料送給 view
-        return view('players.index')->with('players', $players);
+        return view('players.index', ['players' => $players,
+                                      'professions'=>$professions,
+                                      'selectedProfession'=>null,]);
+    }
+
+    public function profession(Request $request)
+    {
+        $players = Player::profession($request->input('pro'))->paginate(25);
+        $professions = Player::allProfessions()->pluck('players.profession', 'players.profession');
+        $selectedProfession = $request->input('pro');
+        return view('players.index', ['players' => $players,
+                                      'professions'=>$professions,
+                                      'selectedProfession'=>$selectedProfession,]);
     }
 
     /**
@@ -90,6 +104,8 @@ class PlayersController extends Controller
 
     public function edit($id)
     {
+        parent::edit($id);
+        
         $player = Player::findOrFail($id);
         $worlds = World::orderBy('worlds.id', 'asc')->pluck('worlds.region', 'worlds.id');
         $selected_tags = $player->region->id;
