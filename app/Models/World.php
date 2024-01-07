@@ -19,4 +19,25 @@ class World extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function players()
+    {
+        return $this->hasMany('App\Models\Player', 'world');
+    }
+
+    public function delete()
+    {
+        $this->players()->delete();
+        return parent::delete();
+    }
+    
+    public function scopeAllTechnologys($query)
+    { 
+        return $query->select('technology')->groupBy('technology');
+    }
+
+    public function scopeTechnology($query, $tec)
+    {
+        return $query->where('technology', '=', $tec);
+    }
 }

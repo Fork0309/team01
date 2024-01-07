@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\World;
+use App\Http\Requests\CreateWorldRequest;
+use Illuminate\Http\Request;
 
 class WorldsController extends Controller
 {
@@ -14,8 +15,24 @@ class WorldsController extends Controller
      */
     public function index()
     {
-        //
-        return World::all()->toArray();
+        // 從 Model 拿資料
+        $worlds = World::all();
+        $technologys = World::allTechnologys()->pluck('worlds.technology', 'worlds.technology');
+        
+        // 把資料送給 view
+        return view('worlds.index', ['worlds' => $worlds,
+                                      'technologys'=>$technologys,
+                                      'selectedTechnology'=>null,]);
+    }
+
+    public function technology(Request $request)
+    {
+        $worlds = World::technology($request->input('tec'))->paginate(25);
+        $technologys = World::allTechnologys()->pluck('worlds.technology', 'worlds.technology');
+        $selectedTechnology = $request->input('tec');
+        return view('worlds.index', ['worlds' => $worlds,
+                                      'technologys'=>$technologys,
+                                      'selectedTechnology'=>$selectedTechnology,]);
     }
 
     /**
@@ -23,9 +40,10 @@ class WorldsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
-        //
+        return view('worlds.create');
     }
 
     /**
@@ -34,9 +52,22 @@ class WorldsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    
+    public function store(CreateWorldRequest $request)
     {
-        //
+        $region = $request->input('region');
+        $rule = $request->input('rule');
+        $attitude = $request->input('attitude');
+        $technology = $request->input('technology');
+        $environment = $request->input('environment');
+
+        $world = World::create([
+            'region'=>$region,
+            'rule'=>$rule,
+            'attitude'=>$attitude,
+            'technology'=>$technology,
+            'environment'=>$environment]);
+        return redirect('worlds');
     }
 
     /**
@@ -45,9 +76,15 @@ class WorldsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
-        //
+        // 從 Model 拿資料
+        $world = World::findOrFail($id);
+        $players = $world->players;
+
+        // 把資料送給 view  
+        return view('worlds.show', ['world'=>$world, 'players'=>$players]);
     }
 
     /**
@@ -56,9 +93,13 @@ class WorldsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function edit($id)
     {
-        //
+        parent::edit($id);
+        
+        $world = World::findOrFail($id);
+        return view('worlds.edit', ['world' =>$world]);
     }
 
     /**
@@ -68,9 +109,19 @@ class WorldsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+
+    public function update(CreateWorldRequest $request, $id)
     {
-        //
+        $world = World::findOrFail($id);
+
+        $world->region = $request->input('region');
+        $world->rule = $request->input('rule');
+        $world->attitude = $request->input('attitude');
+        $world->technology = $request->input('technology');
+        $world->environment = $request->input('environment');
+        $world->save();
+
+        return redirect('worlds');
     }
 
     /**
@@ -79,8 +130,11 @@ class WorldsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
-        //
+        $world = World::findOrFail($id);
+        $world->delete();
+        return redirect('worlds');
     }
 }
