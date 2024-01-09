@@ -27,4 +27,14 @@ class Player extends Model
     {
         return $this->belongsTo('App\Models\World', 'world', 'id');
     }
+
+    public function scopeAllProfessions($query)
+    { 
+        return $query->select('profession')->groupBy('profession');
+    }
+
+    public function scopeProfession($query, $pro)
+    {
+        return $query->where('profession', '=', $pro);
+    }    
 }
