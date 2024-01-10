@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
         $user->name = 'User';
         $user->save();
 
-        //$this->call(PlayersTableSeeder::class);
-        //$this->call(WorldsTableSeeder::class);
+        $this->call(PlayersTableSeeder::class);
+        $this->call(WorldsTableSeeder::class);
     }
 }
